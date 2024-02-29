@@ -51,7 +51,11 @@ function handleRegister() {
   ).value;
   if (valueEmail !== "" && valuePassword !== "") {
     if (checkEmail(valueEmail)) {
-      alert("Email already exists");
+      Swal.fire({
+        title: "Error!",
+        text: "Email already exists",
+        icon: "error"
+      });
     } else {
       if (valuePassword === valueConfPassword) {
         dataUser.push({
@@ -60,14 +64,34 @@ function handleRegister() {
           password: valuePassword,
         });
         localStorage.setItem("account", JSON.stringify(dataUser));
-        alert("Register success"); // ngược lại thông báo email hợp lệ
-        window.location.href = "login.html";
+        // alert("Register success"); // ngược lại thông báo email hợp lệ
+
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Register success",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 1500)
       } else {
-        alert("Confirm Password fail"); // ngược lại thông báo email hợp lệ
+        // alert("Confirm Password fail"); // ngược lại thông báo email hợp lệ
+        Swal.fire({
+          title: "Error!",
+          text: "Confirm Password fail",
+          icon: "error"
+        });
       }
     }
   } else {
-    alert("Please enter your email and password");
+    // alert("Please enter your email and password");
+    Swal.fire({
+      title: "Warning!",
+      text: "Please enter your email and password",
+      icon: "warning"
+    });
   }
 }
 
@@ -79,16 +103,32 @@ function handleLogin() {
   ).value;
   if (valueEmail !== "" && valuePassword !== "") {
     if (checkEmail(valueEmail, valuePassword.toString(), "login")) {
-      alert("Login successful");
+      // alert("Login successful");
       localStorage.setItem("isLogin", "true");
-      window.location.href = "index.html";
-
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Login successful",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 1500)
       // window.location.href = 'theBand.html'
     } else {
-      alert("Account not found");
+      Swal.fire({
+        title: "Error!",
+        text: "Account not found",
+        icon: "error"
+      });
     }
   } else {
-    alert("Please enter email and password");
+    Swal.fire({
+      title: "Warning!",
+      text: "Please enter email and password",
+      icon: "warning"
+    });
   }
 }
 
@@ -139,9 +179,10 @@ console.log(data);
 
 if (localStorage.getItem("isLogin") == "true") {
   document.getElementById("login-re").style.display = "none";
-  document.getElementById("logout").style.display = "block !important";
-  console.log("🚀 ~ handleLogin ~ valueEmail:");
+  document.getElementById("logout").classList.remove("logout");
 }
+
 function logout() {
-  localStorage.setItem("isLogin", "false");
+  localStorage.setItem('isLogin', false);
+  window.location.reload();
 }
