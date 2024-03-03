@@ -91,3 +91,7 @@ h1{
   padding:7px;
   border-radius: 10px;
 }
+
+.body-slide h2{
+  text-align: center;
+}

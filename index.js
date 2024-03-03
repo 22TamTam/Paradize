@@ -54,7 +54,7 @@ function handleRegister() {
       Swal.fire({
         title: "Error!",
         text: "Email already exists",
-        icon: "error"
+        icon: "error",
       });
     } else {
       if (valuePassword === valueConfPassword) {
@@ -71,17 +71,17 @@ function handleRegister() {
           icon: "success",
           title: "Register success",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
         setTimeout(() => {
           window.location.href = "login.html";
-        }, 1500)
+        }, 1500);
       } else {
         // alert("Confirm Password fail"); // ngược lại thông báo email hợp lệ
         Swal.fire({
           title: "Error!",
           text: "Confirm Password fail",
-          icon: "error"
+          icon: "error",
         });
       }
     }
@@ -90,7 +90,7 @@ function handleRegister() {
     Swal.fire({
       title: "Warning!",
       text: "Please enter your email and password",
-      icon: "warning"
+      icon: "warning",
     });
   }
 }
@@ -110,24 +110,23 @@ function handleLogin() {
         icon: "success",
         title: "Login successful",
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
       setTimeout(() => {
         window.location.href = "index.html";
-      }, 1500)
-      // window.location.href = 'theBand.html'
+      }, 1500);
     } else {
       Swal.fire({
         title: "Error!",
         text: "Account not found",
-        icon: "error"
+        icon: "error",
       });
     }
   } else {
     Swal.fire({
       title: "Warning!",
       text: "Please enter email and password",
-      icon: "warning"
+      icon: "warning",
     });
   }
 }
@@ -158,13 +157,13 @@ async function getData() {
               <h5 class="card-title">${result.products[i].brandName}</h5>
               <p class="card-text">
               <span class="card-description">
-              Description: ${result.products[i].description}
-              </span>
+              Description: ${result.products[i].currentSku.imageAltText}
+              </span><br>
               <span class="card-price">
-              Price: ${result.products[i].price}
+              Price: ${result.products[i].currentSku.listPrice}
               </span>
               </p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <a href="#" class="btn btn-primary">Add to cart</a>
             </div>
     </div>
     `;
@@ -183,6 +182,6 @@ if (localStorage.getItem("isLogin") == "true") {
 }
 
 function logout() {
-  localStorage.setItem('isLogin', false);
+  localStorage.setItem("isLogin", false);
   window.location.reload();
 }
