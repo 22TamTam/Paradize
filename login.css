@@ -65,7 +65,7 @@ a:hover {
   .inner .image-holder {
     width: 50%; }
   .inner form {
-    width: 50%;
+    /* width: 50%; */
     padding-top: 36px;
     padding-left: 45px;
     padding-right: 45px; }
@@ -75,6 +75,38 @@ a:hover {
     font-family: "Poppins-SemiBold";
     text-align: center;
     margin-bottom: 28px; }
+.inner{
+      -webkit-animation: flip-scale-up-hor 0.5s linear both;
+            animation: flip-scale-up-hor 0.5s linear both;
+}
+ @-webkit-keyframes inner {
+  0% {
+    -webkit-transform: scale(1) rotateZ(0);
+            transform: scale(1) rotateZ(0);
+  }
+  50% {
+    -webkit-transform: scale(2) rotateZ(180deg);
+            transform: scale(2) rotateZ(180deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotateZ(360deg);
+            transform: scale(1) rotateZ(360deg);
+  }
+}
+@keyframes inner {
+  0% {
+    -webkit-transform: scale(1) rotateZ(0);
+            transform: scale(1) rotateZ(0);
+  }
+  50% {
+    -webkit-transform: scale(2) rotateZ(180deg);
+            transform: scale(2) rotateZ(180deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotateZ(360deg);
+            transform: scale(1) rotateZ(360deg);
+  }
+}
 
 .form-group {
   display: flex; }

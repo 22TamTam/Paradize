@@ -146,6 +146,7 @@ async function getData() {
   try {
     const response = await fetch(url, options);
     const result = await response.json();
+    console.log("🚀 ~ getData ~ result:", result);
 
     for (let i = 0; i < result.products.slice(0, 30).length; i++) {
       htmlProduct += `
@@ -163,7 +164,7 @@ async function getData() {
               Price: ${result.products[i].currentSku.listPrice}
               </span>
               </p>
-              <a href="#" class="btn btn-primary">Add to cart</a>
+              <button class="btn btn-primary" data-id="${result.products[i].productId}" data-Name="${result.products[i].brandName}" data-img="${result.products[i].heroImage}" data-price="${result.products[i].currentSku.listPrice}" role="button">Add to cart</button>
             </div>
     </div>
     `;
@@ -171,6 +172,47 @@ async function getData() {
     document.getElementById("product-panel").innerHTML = htmlProduct;
   } catch (error) {
     console.error(error);
+  }
+
+  document.getElementById("product-panel").innerHTML = htmlProduct;
+  let addToCartButtons = document.getElementsByClassName("btn-primary");
+  for (let button of addToCartButtons) {
+    button.addEventListener("click", addToCart);
+  }
+  function addToCart(event) {
+    let productId = event.target.getAttribute("data-id");
+    let brandName = event.target.getAttribute("data-Name");
+    let heroImage = event.target.getAttribute("data-img");
+    console.log("🚀 ~ addToCart ~ heroImage:", heroImage);
+    let listPrice = event.target.getAttribute("data-price");
+    console.log("🚀 ~ addToCart ~ listPrice:", listPrice);
+    let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    let existingItem = cartItems.find(
+      (item) => item.id === productId,
+      (item) => item.name === brandName,
+      (item) => item.img === heroImage,
+      (item) => item.price === listPrice
+    );
+
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cartItems.push({
+        id: productId,
+        quantity: 1,
+        name: brandName,
+        img: heroImage,
+        price: listPrice,
+      });
+    }
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    Swal.fire({
+      position: "top-center",
+      icon: "success",
+      title: "Cart added successfully",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   }
 }
 getData();

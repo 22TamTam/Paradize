@@ -1,47 +1,86 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Login Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="utf-8" />
-  <title>Login Form</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link
+      rel="stylesheet"
+      href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css"
+    />
 
-  <!-- MATERIAL DESIGN ICONIC FONT -->
-  <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css" />
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10" />
+    <link rel="stylesheet" href="login.css" />
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+  </head>
 
-  <!-- STYLE CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
-  <link rel="stylesheet" href="login.css" />
-</head>
-
-<body>
-  <div class="wrapper" style="
+  <body>
+    <div
+      class="wrapper"
+      style="
         background-image: url('./images/Sb5d3e757948d4d469efa415304972c738.jpg');
-      ">
-    <div class="inner">
-      <div class="image-holder">
-        <img src="./images/img4.webp" alt="" />
+      "
+    >
+      <div class="inner">
+        <div class="image-holder">
+          <img src="./images/img4.webp" alt="" />
+        </div>
+        <form action="">
+          <h3>Log in</h3>
+          <div class="form-wrapper">
+            <input
+              type="email"
+              placeholder="Email Address"
+              class="form-control"
+              id="exampleInputEmail1-login"
+            />
+            <i class="zmdi zmdi-email"></i>
+          </div>
+          <div class="form-wrapper">
+            <input
+              type="password"
+              placeholder="Password"
+              class="form-control"
+              id="exampleInputPassword1-login"
+            />
+            <i class="zmdi zmdi-lock"></i>
+          </div>
+          <button onclick="handleLogin()" class="btn btn-primary">
+            Log in
+            <i class="zmdi zmdi-arrow-right"></i>
+          </button>
+          <div id="firebaseui-auth-container"></div>
+        </form>
       </div>
-      <form action="">
-        <h3>Log in</h3>
-        <div class="form-wrapper">
-          <input type="email" placeholder="Email Address" class="form-control" id="exampleInputEmail1-login" />
-          <i class="zmdi zmdi-email"></i>
-        </div>
-        <div class="form-wrapper">
-          <input type="password" placeholder="Password" class="form-control" id="exampleInputPassword1-login" />
-          <i class="zmdi zmdi-lock"></i>
-        </div>
-        <button onclick="handleLogin()" class="btn btn-primary">
-          Log in
-          <i class="zmdi zmdi-arrow-right"></i>
-        </button>
-      </form>
     </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-  <script src="index.js"></script>
-</body>
-<!-- This templates was made by Colorlib (https://colorlib.com) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+    <script src="index.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-auth.js"></script>
+
+    <!-- <script src="index.js"></script> -->
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyBEm6tX15KWlQy8JkO2EFn7I_rGFTlRuBE",
+        authDomain: "trial-1-4403f.firebaseapp.com",
+        projectId: "trial-1-4403f",
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"
+    />
+    <script src="auth.js"></script>
+  </body>
+  <!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
