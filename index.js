@@ -151,10 +151,10 @@ async function getData() {
     for (let i = 0; i < result.products.slice(0, 30).length; i++) {
       htmlProduct += `
       <div class="card" 
-      style="width: 350px; height:250px; margin:150px 40px;font-size: 15px;">
+      style="width: 250px; font-size: 15px; margin: 0 0 20px 0">
     
             <img class="card-img-top" src='${result.products[i].heroImage}'>
-            <div class="card-body">
+            <div class="card-body card-content">
               <h5 class="card-title">${result.products[i].brandName}</h5>
               <p class="card-text">
               <span class="card-description">
@@ -164,7 +164,7 @@ async function getData() {
               Price: ${result.products[i].currentSku.listPrice}
               </span>
               </p>
-              <button class="btn btn-primary" data-id="${result.products[i].productId}" data-Name="${result.products[i].brandName}" data-img="${result.products[i].heroImage}" data-price="${result.products[i].currentSku.listPrice}" role="button">Add to cart</button>
+              <button class="btn btn-primary btn-buy" data-id="${result.products[i].productId}" data-Name="${result.products[i].brandName}" data-img="${result.products[i].heroImage}" data-price="${result.products[i].currentSku.listPrice}" role="button">Add to cart</button>
             </div>
     </div>
     `;

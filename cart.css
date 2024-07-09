@@ -178,3 +178,27 @@ th{
   width: 80%; 
   margin-left: 150px;
 }
+.delete-btn{
+
+  display: inline-block;
+  outline: 0;
+  text-align: center;
+  cursor: pointer;
+  padding: 5px 15px;
+  border: 0;
+  color: #fff;
+  font-size: 17.5px;
+  border: 2px solid transparent;
+  border-color: #000;
+  color: #000;
+  background: transparent;
+  font-weight: 800;
+  line-height: 30px;
+  transition: background,color .1s ease-in-out;
+  
+  
+}
+.delete-btn:hover {
+  background-color: #000;
+  color: #fff;
+}
