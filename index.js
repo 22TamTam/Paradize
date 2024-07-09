@@ -151,7 +151,7 @@ async function getData() {
     for (let i = 0; i < result.products.slice(0, 30).length; i++) {
       htmlProduct += `
       <div class="card" 
-      style="width: 250px; font-size: 15px; margin: 0 0 20px 0">
+      style="width: 250px; font-size: 15px; margin: 20px 10px 25px 0">
     
             <img class="card-img-top" src='${result.products[i].heroImage}'>
             <div class="card-body card-content">

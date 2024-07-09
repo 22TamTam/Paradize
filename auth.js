@@ -2,8 +2,16 @@ const ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 const uiConfig = {
   callbacks: {
-    signInSuccessWithAuthResult(authResult, redirectUrl) {
-      return true;
+    signInSuccessWithAuthResult: (authResult, redirectUrl) => {
+      authResult.user.getIdTokenResult().then(tokenResult => {
+        if (tokenResult.claims.admin) {
+          localStorage.setItem("isLogin", "true");
+          window.location.assign('/');
+        } else {
+          localStorage.setItem("isLogin", "true");
+          window.location.assign('/');
+        }
+      });
     },
     uiShown() {
       document.getElementById("loader").style.display = "none";
